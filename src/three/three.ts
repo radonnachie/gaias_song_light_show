@@ -13,13 +13,18 @@ document.body.appendChild(renderer.domElement)
 const controls = new OrbitControls(camera, renderer.domElement)
 
 const geometry = new THREE.BoxGeometry()
-const material = new THREE.MeshBasicMaterial({
+const material = new THREE.MeshPhongMaterial({
     color: 0x00ff00,
-    wireframe: true,
 })
 
 const cube = new THREE.Mesh(geometry, material)
 scene.add(cube)
+
+const color = 0xFF88FF;
+const intensity = 3;
+const light = new THREE.DirectionalLight(color, intensity);
+light.position.set(-1, 2, -2);
+scene.add(light);
 
 window.addEventListener('resize', onWindowResize, false)
 function onWindowResize() {
